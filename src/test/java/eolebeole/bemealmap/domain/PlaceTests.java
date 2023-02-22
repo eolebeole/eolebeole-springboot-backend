@@ -26,4 +26,15 @@ class PlaceTests {
         assertEquals(place.getPlaceId(), place2.get().getPlaceId());
     }
 
+    @Test
+    void testUpdate() {
+        Place place = new Place();
+        place.setPlaceId(968661366);
+        place.setPlaceName("한국아이티전문학원");
+        placeRepository.save(place);
+
+        place.setPlaceName(place.getPlaceName() + "추가");
+        placeRepository.save(place);
+    }
+
 }
