@@ -29,11 +29,11 @@ public class Place {
     @Column
     private String categoryName;
 
-    @Column
+    @Transient
     private Long distance;
 
     @Column
-    private Long phone;
+    private String phone;
 
     @Column
     private String placeName;
@@ -45,8 +45,8 @@ public class Place {
     private String roadAddressName;
 
     @Column
-    private Long x;
+    private Double x;
 
     @Column
-    private Long y;
+    private Double y;
 }
