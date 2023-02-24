@@ -10,10 +10,15 @@ import java.util.List;
 @Service
 public class UserService {
 
+    //    CRUD가 구현되어 있는 UserRepository를 생성
     @Autowired
     private UserRepository userRepository;
 
     public List<User> getAllUser() {
         return userRepository.findAll();
+    }
+
+    public User getUser(Long userId) {
+        return userRepository.findById(userId).orElse(null);
     }
 }
