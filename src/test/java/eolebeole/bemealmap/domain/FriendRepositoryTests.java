@@ -1,23 +1,14 @@
 package eolebeole.bemealmap.domain;
 
-import eolebeole.bemealmap.domain.entity.Friend;
 import eolebeole.bemealmap.domain.friend.FriendService;
 import eolebeole.bemealmap.domain.repository.FriendRepository;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Optional;
-
-import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
-
 @SpringBootTest
-class FriendTests {
+class FriendRepositoryTests {
     @Autowired
-    private FriendService friendService;
+    private FriendRepository friendRepository;
 
 //    @Test
 //    void testInsert() {
