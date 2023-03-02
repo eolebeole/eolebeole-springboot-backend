@@ -1,5 +1,7 @@
 package eolebeole.bemealmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,6 +31,10 @@ public class Restaurant {
     private String timeTag;
 
     @Column
+    @JsonIgnore
     private int placeId;
 
+    @JoinColumn(name = "placeId", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Place place;
 }

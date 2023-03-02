@@ -34,7 +34,7 @@ public class User {
     private String nick;
 
     @Column
-    private Long code;
+    private int code;
 
     @Column
     private Long imgId;

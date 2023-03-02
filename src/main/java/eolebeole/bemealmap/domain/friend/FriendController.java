@@ -2,7 +2,6 @@ package eolebeole.bemealmap.domain.friend;
 
 import eolebeole.bemealmap.domain.entity.Friend;
 import eolebeole.bemealmap.domain.entity.User;
-import eolebeole.bemealmap.domain.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
