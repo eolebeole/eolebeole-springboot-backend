@@ -1,9 +1,15 @@
+external:
+  kakao:
+    rest-api-key: b79793b334b045c938709d446132808c
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/secret?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: 1234
+  jackson:
+    property-naming-strategy: SNAKE_CASE
   jpa:
     hibernate:
       ddl-auto: update

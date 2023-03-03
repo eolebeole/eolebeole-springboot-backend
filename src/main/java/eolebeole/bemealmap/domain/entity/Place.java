@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Place {
 
     @Id
-    @Column
-    private int placeId;
+    @Column(name = "placeId")
+    private int id;
 
     @Column
     private String addressName;

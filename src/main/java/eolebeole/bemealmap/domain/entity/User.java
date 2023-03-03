@@ -34,11 +34,11 @@ public class User {
     private String nick;
 
     @Column
-    private int code;
+    private Integer code;
 
     @Column
     private Long imgId;
 
     @Column
-    private int gender;
+    private Integer gender;
 }

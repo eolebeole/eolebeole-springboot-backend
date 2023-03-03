@@ -50,7 +50,7 @@ public class KakaoService {
         Local.BasicInfo info = handleResponse(call).getBasicInfo();
         Place place = transCoord(info.getWpointx(), info.getWpointy(),
                 "WCONGNAMUL", "WGS84").get(0);
-        place.setPlaceId(id);
+        place.setId(id);
         place.setPlaceName(info.getPlacenamefull());
         place.setAddressName(info.getAddress().getName(false));
         place.setRoadAddressName(info.getAddress().getName(true));

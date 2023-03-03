@@ -30,11 +30,13 @@ public class UserController {
     }
 
     @PostMapping
-    public void joinUser(User user) {
-        userService.joinUser(user);
-        System.out.println("회원가입 되셨습니다.");
-    }
+    public void joinUser(User user) { userService.joinUser(user); }
 
+    @DeleteMapping
+    public void deleteUser(User user) { userService.deleteUser(user); }
+
+    @PutMapping("./update")
+    public void updateUser(User user) { userService.updateUser(user); }
 
 
 }

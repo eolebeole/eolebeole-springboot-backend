@@ -1,7 +1,5 @@
 package eolebeole.bemealmap.domain.kakao;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,7 +8,6 @@ import lombok.Data;
  */
 @Data
 @Builder
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class LocalRequest {
     /**
      * 검색을 원하는 질의어 (query)
