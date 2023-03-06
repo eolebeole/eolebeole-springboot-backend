@@ -1,6 +1,5 @@
 package eolebeole.bemealmap.domain.user;
 
-import eolebeole.bemealmap.domain.entity.Friend;
 import eolebeole.bemealmap.domain.entity.User;
 import eolebeole.bemealmap.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

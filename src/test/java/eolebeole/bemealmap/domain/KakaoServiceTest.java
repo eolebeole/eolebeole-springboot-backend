@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class KakaoServiceTest {
 
-    private static Place place = Place.builder().placeId(968661366).placeName("한국아이티전문학원")
+    private static Place place = Place.builder().id(968661366).placeName("한국아이티전문학원")
             .x(127.487453983683).y(36.6438019892317).build();
 
     @Autowired
@@ -32,6 +32,7 @@ public class KakaoServiceTest {
                 .x(place.getX())
                 .y(place.getY())
                 .build());
+        System.out.println(documents);
         assertEquals(15, documents.size());
     }
 
@@ -47,7 +48,7 @@ public class KakaoServiceTest {
 
     @Test
     void testPlaceById() throws IOException {
-        Place result = kakaoService.placeById(place.getPlaceId());
+        Place result = kakaoService.placeById(place.getId());
         System.out.println(result);
         assertEquals("충북 청주시 상당구 사직대로361번길 158-10", result.getRoadAddressName());
         assertEquals("충북 청주시 상당구 북문로3가 44-1", result.getAddressName());

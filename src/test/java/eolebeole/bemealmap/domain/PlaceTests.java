@@ -19,21 +19,21 @@ class PlaceTests {
     void testInsert() {
         Place place = new Place();
         // 값 저장
-        place.setPlaceId(968661366);
+        place.setId(968661366);
         place.setPlaceName("한국아이티전문학원");
         placeRepository.save(place);
 
         // 값 불러오기
-        Optional<Place> place2 = placeRepository.findById(place.getPlaceId());
+        Optional<Place> place2 = placeRepository.findById(place.getId());
 
         // 저장된 값과 불러온 값 일치 여부
-        assertEquals(place.getPlaceId(), place2.get().getPlaceId());
+        assertEquals(place.getId(), place2.get().getId());
     }
 
     @Test
     void testUpdate() {
         Place place = new Place();
-        place.setPlaceId(968661366);
+        place.setId(968661366);
         place.setPlaceName("한국아이티전문학원");
         placeRepository.save(place);
 

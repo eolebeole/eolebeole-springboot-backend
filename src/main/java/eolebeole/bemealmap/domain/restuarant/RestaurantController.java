@@ -13,17 +13,23 @@ import java.util.List;
 public class RestaurantController {
 
     @Autowired
-    private RestauarantService restauarantService;
+    private RestaurantService restaurantService;
 
     @GetMapping("/{userId}")
     public ResponseEntity<List<Restaurant>> getRestaurant(@PathVariable Integer userId) {
         User user = User.builder().userId(1).build(); //TODO: 로그인으로 ID값 받기
-        List<Restaurant> restaurant = restauarantService.getAllRestaurant(user.getUserId());
+        List<Restaurant> restaurant = restaurantService.getAllRestaurant(user.getUserId());
         if (restaurant == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(restaurant);
     }
+
+//    @PostMapping
+//    public void addRestaurant(Restaurant restaurant) { RestaurantService.addRestaurant(restaurant); }
+
+//    @DeleteMapping
+//    public void deleteRestaurant(Restaurant restaurant) { RestaurantService.deleteRestaurant(restaurant); }
 
 
 
