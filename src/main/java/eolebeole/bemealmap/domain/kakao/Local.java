@@ -1,5 +1,6 @@
 package eolebeole.bemealmap.domain.kakao;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import eolebeole.bemealmap.domain.entity.Place;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Data
 public class Local {
+    @JsonProperty("basicInfo")
     private BasicInfo basicInfo;
     private List<Place> documents;
 

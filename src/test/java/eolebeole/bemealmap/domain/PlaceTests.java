@@ -1,19 +1,30 @@
 package eolebeole.bemealmap.domain;
 
 import eolebeole.bemealmap.domain.entity.Place;
+import eolebeole.bemealmap.domain.place.PlaceService;
 import eolebeole.bemealmap.domain.repository.PlaceRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class PlaceTests {
     @Autowired
     private PlaceRepository placeRepository;
+    @Autowired
+    private PlaceService placeService;
+
+    @Test
+    void testGet() throws IOException {
+        Place place = placeService.getPlace(16507806);
+        assertNotNull(place);
+    }
 
     @Test
     void testInsert() {

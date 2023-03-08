@@ -1,7 +1,6 @@
 package eolebeole.bemealmap.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +15,7 @@ import javax.persistence.*;
 public class Restaurant {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int restaurantId;
 
     @Column

@@ -33,6 +33,7 @@ public class KakaoService {
     private <T> T handleResponse(Call<T> call) throws IOException {
         Response<T> response = call.execute();
         if (response.isSuccessful()) {
+            System.out.println(response.body());
             return response.body();
         }
         Error error = objectMapper.readValue(response.errorBody().byteStream(), Error.class);
