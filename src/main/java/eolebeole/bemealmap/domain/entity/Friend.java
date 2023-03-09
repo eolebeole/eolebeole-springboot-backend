@@ -12,8 +12,8 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="Friend")
-@Table(name="friendTable")
+@Entity(name = "Friend")
+@Table(name = "friendTable")
 @IdClass(FriendId.class)
 public class Friend {
     @Id

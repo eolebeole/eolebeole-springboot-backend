@@ -1,16 +1,12 @@
 external:
   kakao:
-    rest-api-key: b79793b334b045c938709d446132808c
-server:
-  port: 4000
+    rest-api-key: c5bbf3c5195d3beff55ae80695a4fe0f
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://micro.cds0flgqug8y.ap-northeast-2.rds.amazonaws.com/eolebeole?serverTimezone=UTC&characterEncoding=UTF-8
-    username: eolebeole
+    url: jdbc:mysql://localhost:3306/eolebeole?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
     password: 1234
-  jackson:
-    property-naming-strategy: SNAKE_CASE
   jpa:
     hibernate:
       ddl-auto: update

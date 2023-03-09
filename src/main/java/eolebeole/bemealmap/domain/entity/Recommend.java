@@ -10,8 +10,8 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name="Recommend")
-@Table(name="recommendTable")
+@Entity(name = "Recommend")
+@Table(name = "recommendTable")
 public class Recommend {
 
     @Id
