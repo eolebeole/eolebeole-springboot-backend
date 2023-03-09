@@ -1,5 +1,6 @@
 package eolebeole.bemealmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class User {
     private String email;
 
     @Column
+    @JsonIgnore
     private String pwd;
 
     @Column
