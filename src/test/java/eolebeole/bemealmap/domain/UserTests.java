@@ -23,14 +23,16 @@ public class UserTests {
     @Test
     void testJoinUser() {
         User user = new User();
+
         user.setEmail("test@naver.com");
         user.setPwd("test1234");
         user.setName("test");
         user.setNick("test");
-        user.setCode(1234);
+        user.setCode(9999);
+        user.setGender(0);
 
-        Optional<User> user2 = userRepository.findById(user.getUserId());
+        User user2 = userRepository.save(user);
 
-        assertEquals(user.getEmail(), user2.get().getEmail());
+        assertEquals(user.getEmail(), user2.getEmail());
     }
 }

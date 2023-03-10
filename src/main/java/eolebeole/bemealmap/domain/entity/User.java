@@ -2,6 +2,7 @@ package eolebeole.bemealmap.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class User {
     private String pwd;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 
     @Column
