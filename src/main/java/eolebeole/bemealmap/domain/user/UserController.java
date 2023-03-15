@@ -1,5 +1,6 @@
 package eolebeole.bemealmap.domain.user;
 
+import eolebeole.bemealmap.domain.entity.Token;
 import eolebeole.bemealmap.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,9 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
+
+    @PostMapping("/login")
+    public Token login(@RequestBody User user) { return userService.loginUser(user); }
 
     @PostMapping
     public void joinUser(User user) { userService.joinUser(user); }

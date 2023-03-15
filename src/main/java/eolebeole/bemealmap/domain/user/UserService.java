@@ -1,5 +1,6 @@
 package eolebeole.bemealmap.domain.user;
 
+import eolebeole.bemealmap.domain.entity.Token;
 import eolebeole.bemealmap.domain.entity.User;
 import eolebeole.bemealmap.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private TokenService tokenService;
+
     public List<User> getAllUser() {
         return userRepository.findAll();
     }
@@ -22,7 +26,20 @@ public class UserService {
         return userRepository.findById(userId).orElse(null);
     }
 
+    public Token loginUser(User user) {
+//        System.out.println(user);
+        User foundUser = userRepository.findByEmail(user.getEmail());
+//        System.out.println(foundUser);
+
+        if (foundUser == null || !foundUser.getPwd().equals(user.getPwd())) {
+            throw new IllegalArgumentException("Invalid email or password");
+        }
+
+        return tokenService.createToken(foundUser);
+    }
+
     public void joinUser(User user) {
+        System.out.println(user);
         if ( user.getUserId() > 0 ) {
             throw new IllegalArgumentException(user.toString());
         }

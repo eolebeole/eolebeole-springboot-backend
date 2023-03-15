@@ -2,6 +2,7 @@ package eolebeole.bemealmap.domain.restuarant;
 
 import eolebeole.bemealmap.domain.entity.Restaurant;
 import eolebeole.bemealmap.domain.entity.User;
+import eolebeole.bemealmap.domain.user.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class RestaurantController {
     @Autowired
     private RestaurantService restaurantService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @GetMapping("/{restaurantId}")
     public ResponseEntity<Restaurant> getRestaurant(@PathVariable Integer restaurantId) {
         Restaurant restaurant = restaurantService.getRestaurant(restaurantId);
@@ -27,9 +31,12 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Restaurant>> getAllRestaurant(Integer userId) {
-        if (userId == null) {
-            User user = User.builder().userId(1).build(); //TODO: 로그인으로 ID값 받기
+    public ResponseEntity<List<Restaurant>> getAllRestaurant(@RequestHeader("Authorization") String authHeader, Integer userId) {
+        if (userId == null) { // ?userId 가 없을 때만 자기가 등록한 식당들을 보여준다.
+            User user = tokenService.verifyAuthHeader(authHeader); // TokenRepository에서 토큰 검사
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
             userId = user.getUserId();
         }
         List<Restaurant> restaurants = restaurantService.getAllRestaurant(userId);
@@ -37,7 +44,14 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public void addRestaurant(Restaurant restaurant) throws IOException { restaurantService.addRestaurant(restaurant); }
+    public ResponseEntity<Restaurant> addRestaurant(@RequestHeader("Authorization") String authHeader, Restaurant restaurant) throws IOException {
+        User user = tokenService.verifyAuthHeader(authHeader);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        restaurant.setUserId(user.getUserId());
+        return ResponseEntity.status(HttpStatus.OK).body(restaurantService.addRestaurant(restaurant));
+    }
 
     @DeleteMapping
     public void deleteRestaurant(Restaurant restaurant) { restaurantService.deleteRestaurant(restaurant); }

@@ -1,7 +1,6 @@
 package eolebeole.bemealmap.domain.restuarant;
 
 import eolebeole.bemealmap.domain.entity.Restaurant;
-import eolebeole.bemealmap.domain.entity.User;
 import eolebeole.bemealmap.domain.place.PlaceService;
 import eolebeole.bemealmap.domain.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +28,14 @@ public class RestaurantService {
         return restaurantRepository.findById(restaurantId).orElse(null);
     }
 
-    public void addRestaurant(Restaurant restaurant) throws IOException {
+    public Restaurant addRestaurant(Restaurant restaurant) throws IOException {
         System.out.println(restaurant);
         if(restaurant.getRestaurantId() > 0) {
             throw new IllegalArgumentException(restaurant.toString());
         }
         assert restaurant.getPlaceId() > 0;
         assert placeService.getPlace(restaurant.getPlaceId()) != null;
-        restaurantRepository.save(restaurant);
+        return restaurantRepository.save(restaurant);
     }
 
     public void deleteRestaurant(Restaurant restaurant) {
