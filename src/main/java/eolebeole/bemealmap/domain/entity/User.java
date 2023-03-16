@@ -1,13 +1,11 @@
 package eolebeole.bemealmap.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Data

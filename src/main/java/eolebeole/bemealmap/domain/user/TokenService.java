@@ -22,7 +22,8 @@ public class TokenService {
 
     public Token createToken(User user) {
         String value = tokenGenerator.generateToken();
-        Token token = Token.builder().value(value).user(user).build();
+        Token token = tokenRepository.findByUserUserId(user.getUserId()).orElse(Token.builder().user(user).build());
+        token.setValue(value);
         tokenRepository.save(token);
         return token;
     }

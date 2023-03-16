@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="tokenTable")
+@Table(name="tokenTable", uniqueConstraints=@UniqueConstraint(columnNames={"userId"}))
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
