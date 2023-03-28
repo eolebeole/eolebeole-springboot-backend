@@ -15,9 +15,9 @@ public class GuestBookController {
     private GuestBookService guestBookService;
 
     @PostMapping("/users/{userId}/guestbooks")
-    public ResponseEntity<GuestBook> addGuestBook(@PathVariable int userId, @RequestParam String content, HttpSession session) {
+    public ResponseEntity<GuestBook> addGuestBook(@PathVariable int userId, @RequestBody GuestBook guestBook, HttpSession session) {
         User user = User.builder().userId(1).build();
-        GuestBook guestBook = guestBookService.addGuestBook(userId, user.getUserId(), content);
+        guestBook = guestBookService.addGuestBook(userId, user.getUserId(), guestBook.getContent());
         return ResponseEntity.ok(guestBook);
     }
 
